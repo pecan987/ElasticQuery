@@ -9,11 +9,20 @@ namespace Spameri\ElasticQuery\Aggregation;
 class Term implements LeafAggregationInterface
 {
 
-	private string $field;
-
-	private int $size;
-
-	private ?int $missing;
+	/**
+	 * @var string
+	 */
+	private $field;
+	
+	/**
+	 * @var int
+	 */
+	private $size;
+	
+	/**
+	 * @var ?int
+	 */
+	private $missing;
 
 	private ?string $key;
 
