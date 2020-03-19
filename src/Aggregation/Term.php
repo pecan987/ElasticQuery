@@ -29,18 +29,25 @@ class Term implements LeafAggregationInterface
 	 */
 	private $key;
 
+    /**
+     * @var array
+     */
+	private $order;
+
 
 	public function __construct(
 		string $field
 		, int $size = 5
 		, int $missing = NULL
 		, string $key = NULL
+        , array $order = NULL
 	)
 	{
 		$this->field = $field;
 		$this->size = $size;
 		$this->missing = $missing;
 		$this->key = $key;
+		$this->order = $order;
 	}
 
 
@@ -55,6 +62,7 @@ class Term implements LeafAggregationInterface
 		$array = [
 			'field' => $this->field,
 			'size'  => $this->size,
+            'order' => $this->order
 		];
 
 		if ($this->missing !== NULL) {
