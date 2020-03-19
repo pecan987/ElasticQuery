@@ -2,35 +2,45 @@
 
 namespace Spameri\ElasticQuery\Aggregation;
 
-class Max implements \Spameri\ElasticQuery\Aggregation\LeafAggregationInterface
+
+/**
+ * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html
+ */
+class Max implements LeafAggregationInterface
 {
 
-	private string $field;
-
-
-	public function __construct(
-		string $field
-	)
-	{
-		$this->field = $field;
-	}
-
-
-	public function key(): string
-	{
-		return 'max_' . $this->field;
-	}
-
+	/**
+	 * @var string
+	 */
+	private $key;
 
 	/**
-	 * @return array<string, array<string, string>>
+	 * @var string
 	 */
-	public function toArray(): array
+	private $script;
+
+	public function __construct(string $key, string $script)
 	{
-		return [
+		$this->key = $key;
+		$this->script = $script;
+	}
+
+	public function key() : string
+	{
+		return $this->key ?? $this->field;
+	}
+
+
+	public function toArray() : array
+	{
+		$array = [
 			'max' => [
-				'field' => $this->field,
-			],
+			    'script' => $this->script
+            ]
+		];
+
+		return [
+			$this->key => $array,
 		];
 	}
 
