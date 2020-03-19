@@ -63,10 +63,10 @@ class LeafAggregationCollection implements LeafAggregationInterface, \IteratorAg
 
 		foreach ($this->aggregations as $aggregation) {
 			if ($aggregation instanceof \Spameri\ElasticQuery\Aggregation\LeafAggregationCollection) {
-				$array[$this->key()]['aggregations'][$aggregation->key()] = $aggregation->toArray()[$aggregation->key()];
+				$array[$this->key()][$aggregation->key()] = $aggregation->toArray()[$aggregation->key()];
 
 			} elseif ($hasFilter) {
-				$array[$this->key()]['aggregations'][$aggregation->key()] = $aggregation->toArray();
+				$array[$this->key()][$aggregation->key()] = $aggregation->toArray();
 
 			} else {
 				$array[$this->key()] = $aggregation->toArray();
