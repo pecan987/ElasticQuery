@@ -47,8 +47,8 @@ class GeoDistance implements LeafQueryInterface
 	public function toArray() : array
 	{
 		$array = [
-			'pin' => [
-				'location' => [
+			'_geo_distance' => [
+				$this->field => [
 					'lat' => $this->lat,
 					'lon' => $this->lon,
 				],
