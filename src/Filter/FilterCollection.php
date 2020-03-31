@@ -41,7 +41,7 @@ class FilterCollection implements FilterInterface
 		$array = [];
 		/** @var \Spameri\ElasticQuery\Query\LeafQueryInterface $item */
 		foreach ($this->mustCollection as $item) {
-			$array['bool']['must'][] = $item->toArray();
+			$array[] = $item->toArray();
 		}
 
 		return $array;
