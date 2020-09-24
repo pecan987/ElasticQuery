@@ -6,7 +6,7 @@ namespace Spameri\ElasticQuery\Aggregation;
 /**
  * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html
  */
-class Max implements LeafAggregationInterface
+class Min implements LeafAggregationInterface
 {
 
 	/**
@@ -34,7 +34,7 @@ class Max implements LeafAggregationInterface
 	public function toArray() : array
 	{
 		$array = [
-			'max' => [
+			'min' => [
 				'field' => $this->field
 			]
 		];
