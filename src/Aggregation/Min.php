@@ -2,35 +2,44 @@
 
 namespace Spameri\ElasticQuery\Aggregation;
 
-class Min implements \Spameri\ElasticQuery\Aggregation\LeafAggregationInterface
+
+/**
+ * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html
+ */
+class Min implements LeafAggregationInterface
 {
 
-	private string $field;
+	/**
+	 * @var string
+	 */
+	private $key;
 
+	/**
+	 * @var string
+	 */
+	private $field;
 
-	public function __construct(
-		string $field
-	) {
+	public function __construct(string $key, string $field)
+	{
+		$this->key = $key;
 		$this->field = $field;
 	}
 
-
-	public function key(): string
+	public function key() : string
 	{
-		return 'min_' . $this->field;
+		return $this->key;
 	}
 
 
-	/**
-	 * @return array<string, mixed>
-	 */
-	public function toArray(): array
+	public function toArray() : array
 	{
-		return [
+		$array = [
 			'min' => [
-				'field' => $this->field,
-			],
+				'field' => $this->field
+			]
 		];
+
+		return $array;
 	}
 
 }

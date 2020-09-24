@@ -17,17 +17,17 @@ class Max implements LeafAggregationInterface
 	/**
 	 * @var string
 	 */
-	private $script;
+	private $field;
 
-	public function __construct(string $key, string $script)
+	public function __construct(string $key, string $field)
 	{
 		$this->key = $key;
-		$this->script = $script;
+		$this->field = $field;
 	}
 
 	public function key() : string
 	{
-		return $this->key ?? $this->field;
+		return $this->key;
 	}
 
 
@@ -35,13 +35,11 @@ class Max implements LeafAggregationInterface
 	{
 		$array = [
 			'max' => [
-			    'script' => $this->script
-            ]
+				'field' => $this->field
+			]
 		];
 
-		return [
-			$this->key => $array,
-		];
+		return $array;
 	}
 
 }

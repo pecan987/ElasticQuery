@@ -204,7 +204,7 @@ class ResultMapper
 			&& isset($aggregationArray['value'])
 		) {
 			$buckets[] = $this->mapBucket(0, [
-				'doc_count' => $aggregationArray['value'],
+				'doc_count' => (int) round($aggregationArray['value']),
 			]);
 		}
 
