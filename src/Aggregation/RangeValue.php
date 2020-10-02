@@ -12,20 +12,20 @@ class RangeValue implements \Spameri\ElasticQuery\Entity\EntityInterface
 	private $key;
 
 	/**
-	 * @var int
+	 * @var int|null
 	 */
 	private $from;
 
 	/**
-	 * @var int
+	 * @var int|null
 	 */
 	private $to;
 
 
 	public function __construct(
 		string $key
-		, int $from
-		, int $to
+		, ?int $from
+		, ?int $to
 	)
 	{
 		$this->key = $key;
