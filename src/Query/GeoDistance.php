@@ -38,25 +38,22 @@ class GeoDistance implements LeafQueryInterface
 	}
 
 
-	public function key() : string
+	public function key(): string
 	{
 		return 'geo_distance_' . $this->field . '_' . $this->lat . '.' . $this->lon;
 	}
 
 
-	public function toArray() : array
+	public function toArray(): array
 	{
-		$array = [
-			'_geo_distance' => [
-				$this->field => [
+		return [
+			'pin' => [
+				'location' => [
 					'lat' => $this->lat,
 					'lon' => $this->lon,
 				],
 			],
 		];
-
-
-		return $array;
 	}
 
 }
