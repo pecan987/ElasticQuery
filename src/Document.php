@@ -35,14 +35,12 @@ class Document implements \Spameri\ElasticQuery\Entity\ArrayInterface
 	public function __construct(
 		?string $index
 		, ?\Spameri\ElasticQuery\Document\BodyInterface $body = NULL
-		, ?string $type = NULL
 		, ?string $id = NULL
 		, array $options = []
 	)
 	{
 		$this->index = $index;
 		$this->body = $body;
-		$this->type = $type;
 		$this->id = $id;
 		$this->options = $options;
 	}
@@ -73,7 +71,7 @@ class Document implements \Spameri\ElasticQuery\Entity\ArrayInterface
 		}
 
 		if ($this->type) {
-			$array['type'] = $this->type;
+			$array['type'] = '_doc';
 		}
 
 		if ($this->id) {
