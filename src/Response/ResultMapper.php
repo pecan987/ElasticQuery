@@ -248,7 +248,7 @@ class ResultMapper
 	): \Spameri\ElasticQuery\Response\Result\Aggregation\Bucket
 	{
 		return new \Spameri\ElasticQuery\Response\Result\Aggregation\Bucket(
-			$bucketArray['key'] ?? (string) $bucketPosition,
+            (string) $bucketArray['key'] ?? (string) $bucketPosition,
 			$bucketArray['doc_count'],
 			\is_int($bucketPosition) ? $bucketPosition : NULL,
 			$bucketArray['from'] ?? NULL,
